@@ -1,0 +1,82 @@
+                                         Anaplan Implementation on Incentive Compensation Management 
+
+      
+Objective : 
+
+         This model is built to track the Performance of Sales Rep's and to calculate the incentives based on the business Metrics.
+
+Scope : 
+ 
+         Track Performances which would help management to take business decisions.
+	 calculate employee incentives based on the drivers which helps to foresee the expenses and help business stay ahead. 
+	 Individual Performances across months would help to make decisions on rep's promotion.
+
+Time Period: 
+	
+	Used Native Time Period From Apr 2022 - Mar 2025 
+
+Version Settings: 
+	Actual, Budget, Forecast
+
+Lists : 
+
+    	Region > Country > Location
+	Product Category > Product SKU's
+	Department > Role > Sales Rep's
+
+Overall Idea:
+	
+	The Source data from the external source (Sales force: CRM) connected using cloud works and performed mapping to do the data Import into ADO, cleaned and transformed
+	Stored the Master data into Data Hub for Business Process.
+
+Modules:
+	System Modules: 
+		To map the attributes and flagging using Filters
+		(attached Screenshot for reference)
+	Ref : System Modules, Sales Rep Details_syst_Mod
+Include the details of modules built to hold lists and hierarchies, Details of Sales Rep's cleaned and stored in the DataHub for Modeling 
+
+	Input Modules: 
+		Input modules hold the drivers which would help the business to make updates and see the results instantly.
+		Eg: Accelerator Rate, based on employee Sales Performance
+		(Attached screenshots for Reference) 
+	Ref: Inp01 Accelerator, Inp02 Bonus
+Drivers are used to create an impact in the calculation based on the inputs given by the management/Excecutives
+
+	Data Modules:
+		Data Modules are used to store actual Business Transactions Eg: Sales Data 
+		(Attached Screenshot for Reference)
+	Ref: Dat01 Actual Sales and Quota Sales, Dat02 Cancelled Orders 
+
+	Calculation Modules:
+		Calculation Modules are used to hold line items and formulas to perform operations
+		(Attached Screenshot for Reference)
+	Ref: CAL01 Incentive Calc_Numbers (Refers the calculation done), CAL01 Incentive Calc_Formulas (Refer the Formulas written)
+		Calculated Individual Sales Rep's Performances comparing the Quota Sales, based on the Performances used the input drivers to fetch the commission rate, bonus, used clawback to detect false commissions for the cancelled orders and calculated th total Incentives
+
+	Report Modules: 
+		To Show Summary across Dimensions
+		(Attached Screenshot for Reference)
+	Ref: Rep01 Country Level Summary 
+		Using Sum Function Aggregate the Rep's incentive expenses across Country. So, the regional manager would see the country wise expenses across months and test against the manually calculated values. Once the data looks good, using workflow get the task approved and automate the task monthly. This would reduce the human effeciency by 50% by automating the task using schedules. 
+		Automated Calculations so less Prone to errors
+		Generate the Commission Payouts on time as it runs on schedule.
+		Audit trial and scalable when dimensions are added eg: when new employees are added
+
+	Selective Access:
+		Regional Manager/Executives are given Access to see the summary of Incentives across Country. 
+		Eg: Which country sales Rep's are Performing good on acheiving targets, low performers are provided with some training
+		decision will be made by the management.
+
+	UX Dashboards: 
+		Sales Rep's Summary with Time and Rep Context filters
+		Country level Summary with Time and Country filters to drill down and compare performances.
+	(Attached Reference Screenshots)
+		Ref: Sales Reps's Summary UX, Country UX
+
+		
+
+	
+
+
+	  
